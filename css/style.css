@@ -1,0 +1,168 @@
+main {
+	width: 940px;
+	height: 1250px;
+	background-color: lightcoral;
+	margin: 50px auto;
+	border: 1px solid black;
+
+}
+
+div {
+	margin: 25px auto;
+	border: 1px solid black;
+	filter: grayscale(1);
+	font-size: 10px;
+	color: white;
+	text-align: center;
+}
+
+
+
+/*_____________________об'єкти________________*/
+.square {
+	width: 150px;
+	height: 150px;
+	background-color: green;
+}
+
+.rectangle {
+	width: 300px;
+	height: 150px;
+	background-color: red;
+}
+
+.circle {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-color: yellow;
+}
+
+.oval {
+	width: 300px;
+	height: 150px;
+	border-radius: 30%;
+	background-color: lightblue;
+
+}
+
+.paralelogram {
+	width: 200px;
+	height: 100px;
+	background-color: mediumaquamarine;
+	transform: skew(-15deg);
+}
+
+.trapezoid {
+	width: 200px;
+	border-bottom: 100px solid orange;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	color: black;
+}
+
+
+.triangle--up {
+	width: 0px;
+	height: 0px;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 100px solid green;
+}
+
+.triangle--down {
+	width: 0px;
+	height: 0px;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 100px solid green;
+}
+
+/* __________спільний hover______*/
+div:hover {
+	letter-spacing: 2px;
+	text-decoration: underline;
+	font-size: 20px;
+	color: black;
+	text-transform: uppercase;
+	box-shadow: 0 3px 0px gray;
+	filter: grayscale(0);
+}
+
+/*___________hover парних div_________*/
+div:nth-child(odd):hover {
+	transform: translate3d(100px, 30px, 30px) rotate3d(1, 1, 1, 30deg);
+	transition-property: transform, filter;
+	transition-duration: 2s, 3s;
+	transition-delay: 0.5s, 0.75s;
+}
+
+/*___________hover непарних div________*/
+div:nth-child(even):hover {
+	transform: translate(-100px, 0px) scale(0.75) skew(5deg) rotate(-30deg);
+	transition: transform 2s ease 0.5s, filter 3s ease 0.75s;
+	/*універсальний запис*/
+}
+
+
+/*анімація*/
+@keyframes animation--geometry--odd {
+	0% {
+		transform: translate(300px, 0px) scale(1.25) skew(-5deg) rotate3d(1, 1, 1, 30deg);
+		filter: grayscale(0);
+	}
+
+	50% {
+		border-radius: 0px;
+	}
+
+	100% {
+		transform: translate(-300px, 0px) scale(0.75) skew(5deg) rotate(-30deg);
+		filter: grayscale(0);
+	}
+}
+
+@keyframes animation--geometry--even {
+	0% {
+
+		transform: translate(-300px, 0px) scale(0.75) skew(5deg) rotate(-30deg);
+		filter: grayscale(0);
+	}
+
+	50% {
+		border-radius: 0px;
+	}
+
+	100% {
+		transform: translate(300px, 0px) scale(1.25) skew(-5deg) rotate3d(1, 1, 1, 30deg);
+		filter: grayscale(0);
+	}
+}
+
+
+div:nth-child(odd) {
+	animation: animation--geometry--odd 4s linear 1.5 alternate running 0.5s;
+	transform: rotateY(150deg);
+	backface-visibility: visible;
+}
+
+
+div:nth-child(even) {
+	animation: animation--geometry--even 4s linear 1.5 alternate running 0.5s;
+	transform: rotateY(-150deg);
+	backface-visibility: visible;
+}
+
+
+div span {
+	opacity: 0;
+	display: block;
+	transform: translate(0px, 50px);
+
+
+}
+
+div span:hover {
+	opacity: 1;
+
+}
